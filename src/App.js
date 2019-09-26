@@ -44,16 +44,19 @@ const App = observer(() => {
 	// 	setCurrentUser({ id: user.id, name: user.name, username: user.username })
 	// }
 	const {setStatusEdit, updateUser, addUser,  editUser, deleteUser} = store;
+	const style= {
+		padding : "100px 0px 100px 0px"
+	}
 	return (
 
-		<div className="container">
-			<Row>
-				<Col span={16}>
+		<div style={style}>
+			<Row gutter={16}>
+				<Col md={{span:10, offset:4}} sx={{span: 20 , offset:2}}>
 					{store.editStatus ? (<Fragment>
                         <h2>Edit user</h2>
                         <EditUser 	setEdit={setStatusEdit}
-                                      currentUser={store.currentUser}
-                                      updateUser={updateUser}
+                                    currentUser={store.currentUser}
+                                    updateUser={updateUser}
                          />
                       </Fragment> ) : 
                     (
@@ -63,7 +66,7 @@ const App = observer(() => {
                         </Fragment>
 					)}
 				</Col>
-				<Col span={8}>
+				<Col md={{span:6}} sx={{span:20}} >
 					<h2>View users</h2>
 					<UserTable users={store.dataTable} editUser={editUser} deleteUser={deleteUser} />
 				</Col>

@@ -2,15 +2,8 @@ import React, { useState, useEffect } from 'react'
 import {
   Form,
   Input,
-  Tooltip,
   Icon,
-  Cascader,
-  Select,
-  Row,
-  Col,
-  Checkbox,
-  Button,
-  AutoComplete,
+  Button
 } from 'antd';
 const EditUser = props => {
   const [ user, setUser ] = useState(props.currentUser)

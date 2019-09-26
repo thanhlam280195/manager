@@ -6,7 +6,7 @@ const UserTable = props => (
   <Table dataSource={props.users}>
     <Column title="Name" dataIndex="name" key="name"/>
     <Column title="User Name"  dataIndex="username" key="username"/>
-    <Column title="Action" title="Action" key="action" render={(text, record)=>(
+    <Column title="Action" key="action" render={(text, record)=>(
       <span>
         <Button type="primary"
                 onClick={() => {
