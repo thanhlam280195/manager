@@ -4,9 +4,9 @@ import EditUser from './components/EditUser';
 import UserTable from './components/UserTbale';
 import {observer} from 'mobx-react-lite';
 import UserStore from './store/UserStore'
+import { Row, Col } from 'antd';
 const App = observer(() => {
 	const store = useContext(UserStore)
-	console.log(11111,store)
 	// const usersData = [
 	// 	{ id: 1, name: 'Lam', username: 'lam1' },
 	// 	{ id: 2, name: 'An', username: 'an1' },
@@ -47,8 +47,8 @@ const App = observer(() => {
 	return (
 
 		<div className="container">
-			<div className="flex-row">
-				<div className="flex-large">
+			<Row>
+				<Col span={16}>
 					{store.editStatus ? (<Fragment>
                         <h2>Edit user</h2>
                         <EditUser 	setEdit={setStatusEdit}
@@ -62,12 +62,12 @@ const App = observer(() => {
                           <AddUser addUser={addUser} />
                         </Fragment>
 					)}
-				</div>
-				<div className="flex-large">
+				</Col>
+				<Col span={8}>
 					<h2>View users</h2>
 					<UserTable users={store.dataTable} editUser={editUser} deleteUser={deleteUser} />
-				</div>
-			</div>
+				</Col>
+			</Row>
 		</div>
 	)
 })

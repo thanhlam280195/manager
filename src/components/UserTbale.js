@@ -1,45 +1,31 @@
 import React from 'react'
-
+import { Button, Table, Divider } from 'antd';
+const { Column } = Table;
 const UserTable = props => (
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Username</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {props.users.length > 0 ? (
-        props.users.map(user => (
-          <tr key={user.id}>
-            <td>{user.name}</td>
-            <td>{user.username}</td>
-            <td>
-              <button
+  
+  <Table dataSource={props.users}>
+    <Column title="Name" dataIndex="name" key="name"/>
+    <Column title="User Name"  dataIndex="username" key="username"/>
+    <Column title="Action" title="Action" key="action" render={(text, record)=>(
+      <span>
+        <Button type="primary"
                 onClick={() => {
-                  props.editUser(user)
+                  props.editUser(record)
                 }}
                 className="button muted-button"
               >
                 Edit
-              </button>
-              <button
-                onClick={() => props.deleteUser(user.id)}
+              </Button>
+              <Divider type="vertical" />
+              <Button type="primary"
+                onClick={() => props.deleteUser(record.key)}
                 className="button muted-button"
               >
                 Delete
-              </button>
-            </td>
-          </tr>
-        ))
-      ) : (
-        <tr>
-          <td colSpan={3}>No users</td>
-        </tr>
-      )}
-    </tbody>
-  </table>
+              </Button>
+      </span>
+    )}/>
+  </Table>
 )
 
 export default UserTable
